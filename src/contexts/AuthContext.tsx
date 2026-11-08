@@ -110,7 +110,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const refreshUser = useCallback(async () => {
     try {
-      const me = await api.get<User>('/api/auth/me');
+      // Timeout 8s: khi BE down/crash-loop, khong treo man hinh "Dang dong bo..." vo han
+      const me = await api.get<User>('/api/auth/me', { signal: AbortSignal.timeout(8000) });
       setUser(me);
       await loadBranchesAndSetDefault(me);
       return me;
