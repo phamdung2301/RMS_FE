@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/components/Toast';
-import { api } from '@/lib/api';
+import { api, API_BASE } from '@/lib/api';
 import { 
   Plus, Edit, Trash2, Calendar, MapPin, Users, Info, Sparkles, Check, Image as ImageIcon, RefreshCw, X, Award, Tag
 } from 'lucide-react';
@@ -296,7 +296,7 @@ export default function CmsEventsPage() {
               {/* Event Image */}
               <div className="h-48 w-full bg-slate-100 relative overflow-hidden shrink-0">
                 {evt.imageUrl ? (
-                  <img src={evt.imageUrl.startsWith('/') ? `http://localhost:8080${evt.imageUrl}` : evt.imageUrl} alt={evt.title} className="w-full h-full object-cover" />
+                  <img src={evt.imageUrl.startsWith('/') ? `${API_BASE}${evt.imageUrl}` : evt.imageUrl} alt={evt.title} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">
                     <ImageIcon className="w-12 h-12" />
