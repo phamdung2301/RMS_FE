@@ -1,0 +1,15 @@
+# ============================================================
+# Render Blueprint - RMS Frontend
+# Render Dashboard -> New + -> Blueprint -> chon repo phamdung2301/RMS_FE
+# Luu y: tao service BE (rms-be) truoc de biet URL chinh xac.
+# ============================================================
+services:
+  - type: web
+    name: rms-fe
+    runtime: docker
+    plan: free
+    region: singapore
+    envVars:
+      # Doi thanh URL BE that cua ban neu ten service khac "rms-be"
+      - key: NEXT_PUBLIC_API_URL
+        value: https://rms-be.onrender.com
